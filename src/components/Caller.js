@@ -20,9 +20,21 @@ const Caller = () => {
     const data = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(data, 'text/html');
-    const productNames = Array.from(doc.querySelectorAll('.product-shortname'))
+    const productNamesIncludingTwin = Array.from(
+      doc.querySelectorAll('.product-shortname')
+    )
       .filter(name => name.innerText.toLowerCase().includes('twin'))
       .map(name => name.innerText);
+
+    const productNamesIncludingHunny = Array.from(
+      doc.querySelectorAll('.product-shortname')
+    )
+      .filter(name => name.innerText.toLowerCase().includes('hunny'))
+      .map(name => name.innerText);
+
+    const productNames = Array.from(
+      productNamesIncludingTwin.concat(productNamesIncludingHunny)
+    );
 
     setDecks(productNames);
   };
