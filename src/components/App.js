@@ -21,11 +21,11 @@ const App = () => (
       <Caller />
       <a
         className="App-link"
-        href="https://www.cowtownskateboards.com/search.cfm"
+        href="https://www.cowtownskateboards.com/shoes/mens-cid-10?Start=17&viewall=1&SortBy=PriceL&Brand=Show%20All%20Brands&Size=12"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Or you can search yourself
+        Click here to search yourself with a headstart
       </a>
     </header>
   </div>
