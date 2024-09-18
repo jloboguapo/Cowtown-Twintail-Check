@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Caller = () => {
   const [decks, setDecks] = useState('Searching for decks');
+  const [quantity, setQuantity] = useState(0);
 
   const deckCheck = Array.isArray(decks);
   const deckArray = deckCheck && decks;
@@ -34,6 +35,7 @@ const Caller = () => {
     );
 
     setDecks(productNames);
+    setQuantity(productNames.length);
   };
 
   useEffect(() => {
@@ -44,7 +46,11 @@ const Caller = () => {
     deckCheck && setDecks(`The ${joinedDecks}`);
   }, [deckCheck]);
 
-  return <h2>{(decks && `${decks}`) || 'No decks yet!'}</h2>;
+  return (
+    <h2>
+      {(decks && `Found ${quantity} decks:\n\n\n${decks}`) || 'No decks yet!'}
+    </h2>
+  );
 };
 
 export default Caller;

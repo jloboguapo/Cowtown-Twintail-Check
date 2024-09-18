@@ -25,6 +25,10 @@
   color: white;
 }
 
+h2 {
+  white-space: pre-line;
+}
+
 .App-link {
   color: #61DAFB;
 }
