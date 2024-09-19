@@ -1,1 +1,1 @@
-Front end version of Cowtown-Twins.
+Gets shoe deals under $40 instead of twintail decks.
