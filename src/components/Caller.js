@@ -25,6 +25,7 @@ const Caller = () => {
     const getProductNames = shortname =>
       Array.from(doc.querySelectorAll('.product-shortname'))
         .filter(name => name.innerText.toLowerCase().includes(shortname))
+        .filter(name => name.innerText.includes(8.5))
         .map(name => name.innerText);
 
     const productNamesIncludingTwin = getProductNames('twin');
