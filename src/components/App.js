@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../css/App.css';
 import Caller from './Caller';
+import logo from '../cowtown-logo.jpg';
 
 const App = () => (
   <div className="App">
@@ -12,11 +13,7 @@ const App = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
-          className="App-logo"
-          src="https://i0.wp.com/azpx.com/wp-content/uploads/2016/07/cowtown.jpg?resize=744%2C744&ssl=1"
-          alt="cowtown-logo"
-        />
+        <img className="App-logo" src={logo} alt="cowtown-logo" />
       </a>
       <Caller />
       <a
