@@ -1,10 +1,12 @@
+import isEmpty from 'lodash.isempty';
 import React, { useState, useEffect } from 'react';
 
 const Caller = () => {
-  const [deals, setDeals] = useState('Searching for deals');
+  const [deals, setDeals] = useState('Searching for deals...');
   const [quantity, setQuantity] = useState(0);
 
-  const dealCheck = Array.isArray(deals);
+  const dealsIsArray = Array.isArray(deals);
+  const dealCheck = dealsIsArray && !isEmpty(deals);
   const dealArray = dealCheck && deals;
   const joinedDeals =
     dealCheck &&
@@ -40,10 +42,17 @@ const Caller = () => {
     dealCheck && setDeals(`${joinedDeals}`);
   }, [dealCheck]);
 
-  return (
+  return quantity > 0 ? (
     <h2>
-      {(deals && `Found ${quantity} deals under $40\n\n\n${deals}`) ||
-        'No deals right now!'}
+      {`Found ${quantity} ${
+        quantity === 1 ? 'deal' : 'deals'
+      } under $40:\n\n\n${deals}`}
+    </h2>
+  ) : (
+    <h2>
+      {dealsIsArray
+        ? `\nThere are no deals under $40\n\n\n`
+        : `\n${deals}\n\n\n`}
     </h2>
   );
 };
