@@ -1,10 +1,12 @@
+import isEmpty from 'lodash.isempty';
 import React, { useState, useEffect } from 'react';
 
 const Caller = () => {
-  const [decks, setDecks] = useState('Searching for decks');
+  const [decks, setDecks] = useState('Searching for decks...');
   const [quantity, setQuantity] = useState(0);
 
-  const deckCheck = Array.isArray(decks);
+  const decksIsArray = Array.isArray(decks);
+  const deckCheck = decksIsArray && !isEmpty(decks);
   const deckArray = deckCheck && decks;
   const joinedDecks =
     deckCheck && deckArray.length > 2
@@ -47,9 +49,15 @@ const Caller = () => {
     deckCheck && setDecks(`The ${joinedDecks}`);
   }, [deckCheck]);
 
-  return (
+  return quantity > 0 ? (
     <h2>
-      {(decks && `Found ${quantity} decks:\n\n\n${decks}`) || 'No decks yet!'}
+      {`Found ${quantity} ${quantity === 1 ? 'deck' : 'decks'}:\n\n\n${decks}`}
+    </h2>
+  ) : (
+    <h2>
+      {decksIsArray
+        ? `\nThere are no twintails available\n\n\n`
+        : `\n${decks}\n\n\n`}
     </h2>
   );
 };
